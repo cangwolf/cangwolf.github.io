@@ -1,0 +1,16 @@
+#+TITLE:       是时候写写博客了
+#+AUTHOR:
+#+EMAIL:       roy@localhost.localdomain
+#+DATE:        2016-03-06 日
+#+URI:         /blog/%y/%m/%d/it-is-time-blog-sth
+#+KEYWORDS:    blo,learn,life
+#+TAGS:        life
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 很长时间以来都没有好好的写blog，不是工作忙，就是没有时间，总之就是懒。是时候写点儿东西了。
+
+之前总是以各种“正当的借口“来不写博客，总之就是懒。人本性懒，我觉得^_<。
+
+从今天起我得记下点儿什么，来记录我这段时间不管是生活，还是工作，或者是学习上的一些感想，或者是学习心得。
+
+茫茫人海，如果你能看到，已是幸事；如果能有所感，岂不是美事。
