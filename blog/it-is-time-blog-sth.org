@@ -1,6 +1,6 @@
 #+TITLE:       是时候写写博客了
-#+AUTHOR:
-#+EMAIL:       roy@localhost.localdomain
+#+AUTHOR:      RoyChen
+#+EMAIL:       gychen1023@gmail.com
 #+DATE:        2016-03-06 日
 #+URI:         /blog/%y/%m/%d/it-is-time-blog-sth
 #+KEYWORDS:    blo,learn,life

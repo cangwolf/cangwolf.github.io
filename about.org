@@ -1,4 +1,6 @@
 #+TITLE: 简介
+#+AUTHOR: RoyChen
+#+EMAIL: gychen1023@gmail.com
 
 80后末班车乘客
 

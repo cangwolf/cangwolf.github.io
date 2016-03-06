@@ -1,4 +1,6 @@
 #+TITLE:殊途
+#+AUTHOR:RoyChen
+#+EMAIL:gychen1023@gmail.com
 
    金秋密林，展开二条小路，\\
    遗憾满怀，无法同时踏足，\\
