@@ -122,9 +122,9 @@ M-x package-install RET org-page RET
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10">遇到的小问题</h2>
-<div class="outline-text-2" id="text-orgheadline10">
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">遇到的小问题</h2>
+<div class="outline-text-2" id="text-orgheadline11">
 </div><div id="outline-container-orgheadline8" class="outline-3">
 <h3 id="orgheadline8">页脚下面的Copyright没有显示自己的名字,并且名字下面的链接也不对</h3>
 <div class="outline-text-3" id="text-orgheadline8">
@@ -151,6 +151,25 @@ M-x customize-variable RET user-full-name
 M-x customize-variable RET user-mail-address
 ; 由于他们都在email Group中，也可以通过如下方式
 M-x customize-group RET mail
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">发布失败，有时候会发布失败</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<div class="org-src-container">
+
+<pre class="src src-elisp">M-x op/do-publication RET y n y y
+</pre>
+</div>
+<p>
+如果失败就需要到blog的目录下的source分支上面，自己手动commit。然后在Emacs中再次发布即可
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">$ git add .
+$ git commit -m 'commit changes'
 </pre>
 </div>
 </div>
