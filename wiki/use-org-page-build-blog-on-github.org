@@ -10,14 +10,14 @@
 #+DESCRIPTION: 使用org-page在GitHub上搭建个人博客
 
 * install
-** 使用package manger
+* 使用package manger
 #+BEGIN_SRC elisp
 ;;;; 由于melpa.org访问比较慢，可以切换到国内@将国宝搭建的elpa源
 ;; (add-to-list 'package-archives
 ;;              '("popkit" . "http://elpa.popkit.org/packages/"))
 M-x package-install RET org-page RET
 #+END_SRC
-** 源码安装
+* 源码安装
 下载源码
 #+BEGIN_SRC
 $ cd /path/you/want/save/
@@ -48,7 +48,7 @@ $ git clone https://github.com/kelvinh/org-page.git
 #+END_SRC
 
 * 第一篇org-page博客
-** 使用new-post,来一步一步的添加
+* 使用new-post,来一步一步的添加
 #+BEGIN_SRC elisp
 M-x op/new-post RET
 #+END_SRC
@@ -60,13 +60,13 @@ M-x op/do-publication-and-previre-site RET
 
 
 * 遇到的小问题
-** 页脚下面的Copyright没有显示自己的名字,并且名字下面的链接也不对
+* 页脚下面的Copyright没有显示自己的名字,并且名字下面的链接也不对
 #+BEGIN_SRC elisp
 ;; 在每个org文件中添加AUTHOR,EMAIL属性
 #+AUTHOR: RoyChen
 #+EMAIL: gychen1023@gmail.com
 #+END_SRC
-** 没有org文件的页面中的Copyright不对，比如Blog，这里需要设置全局名称，全局Email
+* 没有org文件的页面中的Copyright不对，比如Blog，这里需要设置全局名称，全局Email
 #+BEGIN_SRC elisp
 ;; 在配置文件中设置
 (custom-set-variables
