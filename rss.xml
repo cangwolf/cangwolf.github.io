@@ -4,10 +4,17 @@
     <title>Roy&#39;S 呓语</title>
     <link>http://cangwolf.github.io</link>
     <description>=========&gt;&gt; 一个不懂技术的程序员的心路历程</description>
-    <pubDate>一, 07 3月 2016 12:06:35 CST</pubDate>
-    <lastBuildDate>一, 07 3月 2016 12:06:35 CST</lastBuildDate>
+    <pubDate>一, 07 3月 2016 16:29:54 CST</pubDate>
+    <lastBuildDate>一, 07 3月 2016 16:29:54 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>使用Org-Page在GitHub上搭建博客</title>
+      <link>http://cangwolf.github.io/blog/2016/03/07/use-org-page-build-blog-on-github</link>
+      <description><![CDATA[使用org-page在GitHub上搭建个人博客]]></description>
+      <pubDate>2016-03-07</pubDate>
+      <guid>http://cangwolf.github.io/blog/2016/03/07/use-org-page-build-blog-on-github</guid>
+    </item>
     <item>
       <title>是时候写写博客了</title>
       <link>http://cangwolf.github.io/blog/2016/03/06/it-is-time-blog-sth</link>

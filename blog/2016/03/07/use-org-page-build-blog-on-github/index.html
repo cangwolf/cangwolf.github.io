@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>使用Org-Page在GitHub上搭建博客 - Roy&#39;S 呓语</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="RoyChen" />
+    <meta name="description" content="使用org-page在GitHub上搭建个人博客" />
+    <meta name="keywords" content="org-page" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Roy&#39;S 呓语</a></h1>
+        <p>=========&gt;&gt; 一个不懂技术的程序员的心路历程</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="http://github.com/cangwolf">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="cangwolf.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>使用Org-Page在GitHub上搭建博客</h1>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">install</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">使用package manger</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-elisp">;;;; 由于melpa.org访问比较慢，可以切换到国内@将国宝搭建的elpa源
+;; (add-to-list 'package-archives
+;;              '("popkit" . "http://elpa.popkit.org/packages/"))
+M-x package-install RET org-page RET
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">配置</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-elisp">;;;; 在你的～/.emacs 或者  ~/.emacs.d/init.el 中配置
+(add-to-list 'load-path "/org-page/path/")
+
+;;; config Org-Page
+(require 'org-page)
+
+;; 设置GitHub上的blog在本地的代码仓库路径,分支里需要一个source分支，
+;;  eg. ~/github/cangwolf.github.io/
+(setq op/repository-directory "/blog/github/local/dir")
+
+;; 设置站点
+(setq op/site-domain "http://cangwolf.github.io")
+;; 设置自己的github地址 这样子首页的那个github就可以链接到你的github了
+(setq op/personal-github-link "http://github.com/cangwolf")
+
+;; 设置评论系统，我用的Disqus,需要你去disqus.com去注册
+(setq op/personal-disque-shortname "cangwolf")
+
+;; 设置主/副标题
+(setq op/site-main-title "Roy'S 呓语")
+(setq op/site-sub-title "=========&gt;&gt; 一个不懂技术的程序员的心路历程")
+
+;; 这是email中的[@,.] 转成 [at,dot]
+(setq op/confound-email t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">第一篇org-page博客</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">使用new-post,来一步一步的添加</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-elisp">M-x op/new-post RET
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">随意写点儿内容,看看效果</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-elisp">M-x op/do-publication-and-preview-site RET
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">遇到的小问题</h2>
+<div class="outline-text-2" id="text-orgheadline9">
+</div><div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">页脚下面的Copyright没有显示自己的名字,并且名字下面的链接也不对</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-elisp">;; 在每个org文件中添加AUTHOR,EMAIL属性
+#+AUTHOR: RoyChen
+#+EMAIL: gychen1023@gmail.com
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">没有org文件的页面中的Copyright不对，比如Blog，这里需要设置全局名称(user-full-name)，全局Email(user-mail-address)</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<div class="org-src-container">
+
+<pre class="src src-elisp">;; 在配置文件中设置
+(custom-set-variables
+  '(user-full-name "RoyChen")
+  '(user-mail-address "gychen1023@gmail.com"))
+;; 在Emacs中配置
+M-x customize-variable RET user-full-name
+M-x customize-variable RET user-mail-address
+; 由于他们都在email Group中，也可以通过如下方式
+M-x customize-group RET mail
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-03-07</span>
+        <span title="last modification date" class="post-info">2016-03-07</span>
+        <span title="tags" class="post-info"><a href="/tags/org-page/">org-page</a>, <a href="/tags/wiki/">wiki</a></span>
+        <span title="author" class="post-info">RoyChen</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/03/07/use-org-page-build-blog-on-github";
+          var disqus_url = "http://cangwolf.github.io/blog/2016/03/07/use-org-page-build-blog-on-github";
+          var disqus_shortname = 'cangwolf';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:gychen1023 &lt;at&gt; gmail &lt;dot&gt; com">RoyChen</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
