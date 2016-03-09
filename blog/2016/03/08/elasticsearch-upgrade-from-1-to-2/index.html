@@ -32,6 +32,25 @@
 <div>
 <div class="post">
 <h1>ElasticSearch 从1.x升级到2.x的注意事项</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">约定</a></li>
+<li><a href="#orgheadline2">为什么要升级</a></li>
+<li><a href="#orgheadline3">过程</a></li>
+<li><a href="#orgheadline7">修改代码</a>
+<ul>
+<li><a href="#orgheadline4">首先是初始化TransportClient</a></li>
+<li><a href="#orgheadline5">Query的时候，QueryCache</a></li>
+<li><a href="#orgheadline6">删除mappings的API没了</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline8">总结</a></li>
+<li><a href="#orgheadline9">附录</a></li>
+</ul>
+</div>
+</div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">约定</h2>
@@ -129,6 +148,14 @@ return result.get().isAcknowledged();
 
 <p>
 在之前整合ES的时候还是踩了不少的石头，这次重新梳理之后，准备把这部分代码抽成一个类似ORM的框架出来，使其它的项目里可以非常快地实现增删改查。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">附录</h2>
+<div class="outline-text-2" id="text-orgheadline9">
+<p>
+<a href="https://www.elastic.co/blog/key-point-to-be-aware-of-when-upgrading-from-elasticsearch-1-to-2">key-point-to-be-aware-of-when-upgrading-from-elasticsearch-1-to-2</a>
 </p>
 </div>
 </div>
