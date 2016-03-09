@@ -4,10 +4,17 @@
     <title>Roy&#39;S 呓语</title>
     <link>http://cangwolf.github.io</link>
     <description>=========&gt;&gt; 一个不懂技术的程序员的心路历程</description>
-    <pubDate>三, 09 3月 2016 16:06:51 CST</pubDate>
-    <lastBuildDate>三, 09 3月 2016 16:06:51 CST</lastBuildDate>
+    <pubDate>四, 10 3月 2016 00:20:43 CST</pubDate>
+    <lastBuildDate>四, 10 3月 2016 00:20:43 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>对于面试,一些不好的心得</title>
+      <link>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</link>
+      <description><![CDATA[有时候一些面试只是为了尽可能的去迎合面试官的口味，而没有展示真正的自己]]></description>
+      <pubDate>2016-03-10</pubDate>
+      <guid>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</guid>
+    </item>
     <item>
       <title>ElasticSearch 从1.x升级到2.x的注意事项</title>
       <link>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</link>
