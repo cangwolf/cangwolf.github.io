@@ -39,15 +39,16 @@
 <li><a href="#orgheadline1">约定</a></li>
 <li><a href="#orgheadline2">为什么要升级</a></li>
 <li><a href="#orgheadline3">过程</a></li>
-<li><a href="#orgheadline7">修改代码</a>
+<li><a href="#orgheadline8">修改代码</a>
 <ul>
 <li><a href="#orgheadline4">首先是初始化TransportClient</a></li>
 <li><a href="#orgheadline5">Query的时候，QueryCache</a></li>
 <li><a href="#orgheadline6">删除mappings的API没了</a></li>
+<li><a href="#orgheadline7">一次查询，设置返回的条数最多是10000</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline8">总结</a></li>
-<li><a href="#orgheadline9">附录</a></li>
+<li><a href="#orgheadline9">总结</a></li>
+<li><a href="#orgheadline10">附录</a></li>
 </ul>
 </div>
 </div>
@@ -85,9 +86,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">修改代码</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">修改代码</h2>
+<div class="outline-text-2" id="text-orgheadline8">
 </div><div id="outline-container-orgheadline4" class="outline-3">
 <h3 id="orgheadline4">首先是初始化TransportClient</h3>
 <div class="outline-text-3" id="text-orgheadline4">
@@ -138,10 +139,24 @@ return result.get().isAcknowledged();
 </p>
 </div>
 </div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">一次查询，设置返回的条数最多是10000</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-java">//如果size设置的　＞　10000 , 就算没有那么多数据，也会报错
+client.prepareSearch(index).setTypes(type)
+                    .setQuery(queryBuilder)
+                    .setFrom(from)
+                    .setSize(size);
+</pre>
 </div>
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">总结</h2>
-<div class="outline-text-2" id="text-orgheadline8">
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">总结</h2>
+<div class="outline-text-2" id="text-orgheadline9">
 <p>
 最后还是感慨一下，代码按照官方规范去写，后期的维护成本还是比较小的。
 </p>
@@ -151,9 +166,9 @@ return result.get().isAcknowledged();
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">附录</h2>
-<div class="outline-text-2" id="text-orgheadline9">
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">附录</h2>
+<div class="outline-text-2" id="text-orgheadline10">
 <p>
 <a href="https://www.elastic.co/blog/key-point-to-be-aware-of-when-upgrading-from-elasticsearch-1-to-2">key-point-to-be-aware-of-when-upgrading-from-elasticsearch-1-to-2</a>
 </p>
@@ -165,7 +180,7 @@ return result.get().isAcknowledged();
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2016-03-08</span>
-        <span title="last modification date" class="post-info">2016-03-09</span>
+        <span title="last modification date" class="post-info">2016-03-10</span>
         <span title="tags" class="post-info"><a href="/tags/elasticsearch/">ElasticSearch</a></span>
         <span title="author" class="post-info">RoyChen</span>
       </div>
