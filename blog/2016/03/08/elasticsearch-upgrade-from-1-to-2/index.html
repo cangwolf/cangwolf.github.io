@@ -43,7 +43,7 @@
 <ul>
 <li><a href="#orgheadline4">首先是初始化TransportClient</a></li>
 <li><a href="#orgheadline5">Query的时候，QueryCache</a></li>
-<li><a href="#orgheadline6">删除mappings的API没了</a></li>
+<li><a href="#orgheadline6">删除mappings的API没了[[</a></li>
 <li><a href="#orgheadline7">一次查询，设置返回的条数最多是10000</a></li>
 </ul>
 </li>
@@ -115,9 +115,10 @@ client.preparSearch(index).types(type).setQueryCache(false)
 </div>
 </div>
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">删除mappings的API没了<a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.2/indices-delete-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/2.2/indices-delete-mapping.html</a></h3>
+<h3 id="orgheadline6">删除mappings的API没了[[</h3>
 <div class="outline-text-3" id="text-orgheadline6">
 <p>
+<a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.2/indices-delete-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/2.2/indices-delete-mapping.html</a>]]
 官网原话：
 <b>It is no longer possible to delete the mapping for a type. Instead you should delete the index and recreate it with the new mappings.</b> <br  />
 官方的说法是如果要删除mappings要先删掉index，然后重建。(这相当与MySQL中要删除一个表，需要删掉一个DB，然后重建DB，尼玛。不过mappings一般都是上线前设计好的，为毛要删呢)
