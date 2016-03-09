@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>ElasticSearch 从1.x升级到2.x的注意事项 - Roy&#39;S 呓语</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="RoyChen" />
+    <meta name="description" content="ES从1.x升级到2.x，一些注意事项" />
+    <meta name="keywords" content="ElasticSearch,Upgrade" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Roy&#39;S 呓语</a></h1>
+        <p>=========&gt;&gt; 一个不懂技术的程序员的心路历程</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="http://github.com/cangwolf">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="cangwolf.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>ElasticSearch 从1.x升级到2.x的注意事项</h1>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">约定</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<ul class="org-ul">
+<li>ElasticSearch 简称为 ES</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">为什么要升级</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+对于这个问题的答案我相信官网已经给了最好的解释。<br  />
+但我这里的理由不是那些技术上的事儿。没有别的就是为了赶时髦，趁着业务系统升级，我顺便也把一直"没有时间"去整理的ES client api好好整理完善一下，填填那些技术坑。至于为什么要用ES,日后另写。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">过程</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+下载最新的ES<br  />
+配置ES(conf/elasticsearch.yml中的配置项没有1.x中的多，比如transport.tcp.port这个属性就没有，可以去官网查，也可参考ES1.x的)<br  />
+安装插件(head:查询数据,bigdesk:监控,kibana:监控) <br  />
+安装中文分词插件IK(源码编译的，直接把target/release/下的zip，解压到es/plugin/ik中即可，不用像1.x那样还要配到es/conf/elasticsearch.yml,把字典文件复制到es/conf下了，方便省事）<br  />
+更新客户端jar(客户端要使用和服务端版本号一致的jar包，否则可能会出现一些奇怪的问题）<br  />
+上一步还没完，乐子才刚刚开始。先不说数据迁移的问题，api都变了，虽然之前用的1.7.2(因为当时2.x还在开发阶段),虽然当时写代码时已经用了官方建议的最新的API，但。。。你懂的
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">修改代码</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+</div><div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">首先是初始化TransportClient</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-java">//ES 1.x  这里的host均是指ip地址
+TransportClient client = new TransportClient().addTransportAddress(new InetSocketTransportAddress(host , port));
+//ES 2.x
+TransportClient client = TransportClient.builder().build().addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(host) , port));
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Query的时候，QueryCache</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-java">//1.x
+client.preparSearch(index).types(type).setQueryCache(false)
+//2.x setQueryCache直接没了
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">删除mappings的API没了<a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.2/indices-delete-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/2.2/indices-delete-mapping.html</a></h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+官网原话：
+<b>It is no longer possible to delete the mapping for a type. Instead you should delete the index and recreate it with the new mappings.</b> <br  />
+官方的说法是如果要删除mappings要先删掉index，然后重建。(这相当与MySQL中要删除一个表，需要删掉一个DB，然后重建DB，尼玛。不过mappings一般都是上线前设计好的，为毛要删呢)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">//1.x
+DeleteMappingRequest deleteMappingRequest = new DeleteMappingRequest(index).types(type);
+DeleteMappingResponse deleteMappingResponse = client.admin().indices().deleteMapping(deleteMappingRequest).actionGet();
+return deleteMappingResponse.isAcknowledged();
+//2.x 直接删index
+DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest(index);
+ListenableActionFuture&lt;DeleteIndexResponse&gt; result = client.admin().indices().prepareDelete(index).execute();
+return result.get().isAcknowledged();
+</pre>
+</div>
+<p>
+不过个人觉的还是把数据结构一致的数据放到一个type对应一个index比较好，可能由于我们这里放的是基础数据，所以有这样的”错觉“
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">总结</h2>
+<div class="outline-text-2" id="text-orgheadline8">
+<p>
+最后还是感慨一下，代码按照官方规范去写，后期的维护成本还是比较小的。
+</p>
+
+<p>
+在之前整合ES的时候还是踩了不少的石头，这次重新梳理之后，准备把这部分代码抽成一个类似ORM的框架出来，使其它的项目里可以非常快地实现增删改查。
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-03-08</span>
+        <span title="last modification date" class="post-info">2016-03-09</span>
+        <span title="tags" class="post-info"><a href="/tags/elasticsearch/">ElasticSearch</a></span>
+        <span title="author" class="post-info">RoyChen</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2";
+          var disqus_url = "http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2";
+          var disqus_shortname = 'cangwolf';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:gychen1023 &lt;at&gt; gmail &lt;dot&gt; com">RoyChen</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

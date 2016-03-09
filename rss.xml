@@ -4,10 +4,17 @@
     <title>Roy&#39;S 呓语</title>
     <link>http://cangwolf.github.io</link>
     <description>=========&gt;&gt; 一个不懂技术的程序员的心路历程</description>
-    <pubDate>一, 07 3月 2016 16:40:17 CST</pubDate>
-    <lastBuildDate>一, 07 3月 2016 16:40:17 CST</lastBuildDate>
+    <pubDate>三, 09 3月 2016 11:13:05 CST</pubDate>
+    <lastBuildDate>三, 09 3月 2016 11:13:05 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>ElasticSearch 从1.x升级到2.x的注意事项</title>
+      <link>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</link>
+      <description><![CDATA[ES从1.x升级到2.x，一些注意事项]]></description>
+      <pubDate>2016-03-09</pubDate>
+      <guid>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</guid>
+    </item>
     <item>
       <title>使用Org-Page在GitHub上搭建博客</title>
       <link>http://cangwolf.github.io/blog/2016/03/07/use-org-page-build-blog-on-github</link>
