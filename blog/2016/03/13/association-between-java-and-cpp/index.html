@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>C++与Java那千丝万缕的关系之语法　(一) - Roy&#39;S 呓语</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="RoyChen" />
+    <meta name="description" content="对于C++的语法与java的相似之处" />
+    <meta name="keywords" content="C++,Java" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Roy&#39;S 呓语</a></h1>
+        <p>=========&gt;&gt; 一个不懂技术的程序员的心路历程</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="http://github.com/cangwolf">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="cangwolf.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>C++与Java那千丝万缕的关系之语法　(一)</h1>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">0X00</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+学习Java的时候，就听说Java就是Ｃ++--。在看<a id="orgtarget1"></a>的时候，也看到作者经常把Java和C++做一些比较，当时自己肤浅地
+认为C++不过是C的增强版，增加了一些面向对象的思想。但是随着几年来，对Java的深入使用后发现，其实运行Java的Jvm就是C++写的，包括
+JDK中的一些关键特性都是C++来实现的，包括最近一年多来对与Jvm调优的一些案例，让我觉得有必要搞清楚GC的实现，以及JDK中的那些native
+方法在不同OS上的实现。没错，我学习C++就是为了看Java源码的！
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">总要开始，那就现在吧</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+京东上买了一本<a id="orgtarget2"></a>,从此开始了一段可能是前所未有的旅途。
+</p>
+
+<p>
+为什么要从第一页开始看？我觉得主要是Ｃ,C++,Java的语法虽有一些相似之处，但是还是要从最基础的开始，上层的抽象思想在编程语言之间
+应该都有相通之处，而基础才是这些思想得以实现的根基。
+</p>
+
+<p>
+凑着地铁上，下班后的零碎时间，今晚总算把前三章学习完了，虽然是精读，毕竟不是天才，做不到过目不忘，还是想有一个总结的，总结下这三
+章我学的那些新的概念是我从来没有听说过的，或者以前听过现在忘掉的。
+</p>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">引用　＆</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+C++中的引用其实和Java中的声明的语义是一致的。因为Java中都是值引用，包括方法传的都是引用，而不是拷贝。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">指针</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<p>
+其实和C的语义应该是相通的，只不过多了更多的类型
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">auto decltype</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+auto : 是在不确定一个变量是什么类型的时候可以用，比如stirng.length(),vector.size()
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">auto x = f();
+</pre>
+</div>
+
+<p>
+decltype : 是在想用一个函数的返回值类型来作为类型的时候
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">decltype(f()) x = 11;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">string</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+string　的初始化其实就是一个char[]
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">string s1("Roy");  // 直接初始化
+srring s2 = "Roy"; //拷贝初始化
+string s3(10,'r'); //内容是"rrrrrrrrrr"
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">vector</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+这个可以理解为变长的数组，类似Java中的ArrayList。但是ＡrrayList是必须要初始化的，而vector声明之后就可以使用，即使没有指定容量。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">vector&lt;string&gt; v1(10,"roy");       //一个有10个"roy"的vector
+vector&lt;string&gt; v2(10);          //初始化10个空字符的vector,这里如果是int,就是10个０，如果是其它类型就是其它类型的初始值
+vector&lt;string&gt; v3{"roy","chen"};  //
+vector&lt;string&gt; v4 = {"roy","chen"};
+
+vector&lt;string&gt; names;
+names.push_back("Roy");   //即使没有初始化大小，但也是可以使用push_back在末尾添加一个元素的
+name[1];                  //这里会报segmentation fault,分割错误，由于是运行时报错，应该非常难查找
+</pre>
+</div>
+<p>
+string中也实现了一些vector，比如begin&amp;end.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">string name("Roy");
+auto v = name.begin();
+while((++v) != name.eng())
+   *v = toupper(*v);
+std::cout&lt;&lt;name&lt;&lt;std::endl;
+*name.end() = 'e';           //name ROY , 由于end()返回去其实是name的char[４]中的最后的那个空字符，C语言中字符数组的最后一位是空，但是必须得有
+*name.begin() = 'b';         //name bOY
+name.empty();    //如果为空就返回true
+name.size();     //返回数量　如果初始化时是10,如果没有进行push_back那么数量一直是10,进行一次push_back就会加1
+vector&lt;string&gt; strs(10);
+strs.size();   // 10
+strs.push_back("s11"); // 11
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">array</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+数组和C中的有一些相似，*使用时不会检查数组的下标时候越界*,越界的下标运行时会有意想不到的结果。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">int nums[3] = {0,1,2,3};   //compile error, 超过了数组的容量
+nums[6]; //不知道结果，可能是０或者其它的值
+int n2[] = nums; //error 不能拷贝和赋值
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">指针和数组，指针和迭代器</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<p>
+他们之间有很过故事，看似没有联系，但其实有数不清的关系。
+指针指的的是内存地址，每当加1时候其实是指向了下一个内存块。
+</p>
+
+<p>
+你以为完了吗？会持续更新的，当我有一些新的理解时。
+</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-03-13</span>
+        <span title="last modification date" class="post-info">2016-03-13</span>
+        <span title="tags" class="post-info"><a href="/tags/c++/">C++</a></span>
+        <span title="author" class="post-info">RoyChen</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/03/13/association-between-java-and-cpp";
+          var disqus_url = "http://cangwolf.github.io/blog/2016/03/13/association-between-java-and-cpp";
+          var disqus_shortname = 'cangwolf';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-74897448-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:gychen1023 &lt;at&gt; gmail &lt;dot&gt; com">RoyChen</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

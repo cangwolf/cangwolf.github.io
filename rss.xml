@@ -4,23 +4,30 @@
     <title>Roy&#39;S 呓语</title>
     <link>http://cangwolf.github.io</link>
     <description>=========&gt;&gt; 一个不懂技术的程序员的心路历程</description>
-    <pubDate>四, 10 3月 2016 00:25:27 CST</pubDate>
-    <lastBuildDate>四, 10 3月 2016 00:25:27 CST</lastBuildDate>
+    <pubDate>日, 13 3月 2016 23:49:53 CST</pubDate>
+    <lastBuildDate>日, 13 3月 2016 23:49:53 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>C++与Java那千丝万缕的关系之语法　(一)</title>
+      <link>http://cangwolf.github.io/blog/2016/03/13/association-between-java-and-cpp</link>
+      <description><![CDATA[对于C++的语法与java的相似之处]]></description>
+      <pubDate>2016-03-13</pubDate>
+      <guid>http://cangwolf.github.io/blog/2016/03/13/association-between-java-and-cpp</guid>
+    </item>
+    <item>
+      <title>对于面试,一些不好的心得</title>
+      <link>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</link>
+      <description><![CDATA[有时候一些面试只是为了尽可能的去迎合面试官的口味，而没有展示真正的自己]]></description>
+      <pubDate>2016-03-13</pubDate>
+      <guid>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</guid>
+    </item>
     <item>
       <title>ElasticSearch 从1.x升级到2.x的注意事项</title>
       <link>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</link>
       <description><![CDATA[ES从1.x升级到2.x，一些注意事项]]></description>
       <pubDate>2016-03-10</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</guid>
-    </item>
-    <item>
-      <title>对于面试,一些不好的心得</title>
-      <link>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</link>
-      <description><![CDATA[有时候一些面试只是为了尽可能的去迎合面试官的口味，而没有展示真正的自己]]></description>
-      <pubDate>2016-03-10</pubDate>
-      <guid>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</guid>
     </item>
     <item>
       <title>使用Org-Page在GitHub上搭建博客</title>
