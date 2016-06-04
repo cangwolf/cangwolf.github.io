@@ -1,0 +1,11 @@
+#+TITLE:       Scala学习笔记
+#+AUTHOR:      RoyChen
+#+EMAIL:       gychen1023@gmail.com
+#+DATE:        2016-05-23 Mon
+#+URI:         /blog/%y/%m/%d/scala-learning-note
+#+KEYWORDS:    scala
+#+TAGS:        scala
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Scala学习笔记,主要记录Scala和Java的一些异同
+
