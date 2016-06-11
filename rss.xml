@@ -4,64 +4,50 @@
     <title>Roy&#39;S 呓语</title>
     <link>http://cangwolf.github.io</link>
     <description>=========&gt;&gt; 一个不懂技术的程序员的心路历程</description>
-    <pubDate>Sat, 04 Jun 2016 17:50:44 CST</pubDate>
-    <lastBuildDate>Sat, 04 Jun 2016 17:50:44 CST</lastBuildDate>
+    <pubDate>Sat, 11 Jun 2016 14:40:28 CST</pubDate>
+    <lastBuildDate>Sat, 11 Jun 2016 14:40:28 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>C++与Java那千丝万缕的关系之语法　(一)</title>
       <link>http://cangwolf.github.io/blog/2016/03/13/association-between-java-and-cpp</link>
       <description><![CDATA[对于C++的语法与java的相似之处]]></description>
-      <pubDate>2016-05-23</pubDate>
+      <pubDate>2016-06-04</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/03/13/association-between-java-and-cpp</guid>
     </item>
     <item>
       <title>ElasticSearch 从1.x升级到2.x的注意事项</title>
       <link>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</link>
       <description><![CDATA[ES从1.x升级到2.x，一些注意事项]]></description>
-      <pubDate>2016-05-23</pubDate>
+      <pubDate>2016-06-04</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/03/08/elasticsearch-upgrade-from-1-to-2</guid>
     </item>
     <item>
       <title>是时候写写博客了</title>
       <link>http://cangwolf.github.io/blog/2016/03/06/it-is-time-blog-sth</link>
       <description><![CDATA[很长时间以来都没有好好的写blog，不是工作忙，就是没有时间，总之就是懒。是时候写点儿东西了。]]></description>
-      <pubDate>2016-05-23</pubDate>
+      <pubDate>2016-06-04</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/03/06/it-is-time-blog-sth</guid>
     </item>
     <item>
       <title>最好的学习方式或许就是读书</title>
       <link>http://cangwolf.github.io/blog/2016/03/16/the-best-way-to-learn-maybe-the-book</link>
       <description><![CDATA[最好的学习途径或许就是书，在你没有那么牛的时候]]></description>
-      <pubDate>2016-05-23</pubDate>
+      <pubDate>2016-06-04</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/03/16/the-best-way-to-learn-maybe-the-book</guid>
     </item>
     <item>
       <title>人之初,性本懒</title>
       <link>http://cangwolf.github.io/blog/2016/04/06/ververy-person-is-layy</link>
       <description><![CDATA[每个人都是懒惰的]]></description>
-      <pubDate>2016-05-23</pubDate>
+      <pubDate>2016-06-04</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/04/06/ververy-person-is-layy</guid>
-    </item>
-    <item>
-      <title>一个领导的自我修养</title>
-      <link>http://cangwolf.github.io/blog/2016/03/23/never-say-fuck-to-your-subordinates</link>
-      <description><![CDATA[不要随意的对自己的下属说脏话，特别是在公司里，当着所有人的面]]></description>
-      <pubDate>2016-05-23</pubDate>
-      <guid>http://cangwolf.github.io/blog/2016/03/23/never-say-fuck-to-your-subordinates</guid>
-    </item>
-    <item>
-      <title>对于面试,一些不好的心得</title>
-      <link>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</link>
-      <description><![CDATA[有时候一些面试只是为了尽可能的去迎合面试官的口味，而没有展示真正的自己]]></description>
-      <pubDate>2016-05-23</pubDate>
-      <guid>http://cangwolf.github.io/blog/2016/03/09/sometie-i-have-some-doubt-about-interview</guid>
     </item>
     <item>
       <title>使用Org-Page在GitHub上搭建博客</title>
       <link>http://cangwolf.github.io/blog/2016/03/07/use-org-page-build-blog-on-github</link>
       <description><![CDATA[使用org-page在GitHub上搭建个人博客]]></description>
-      <pubDate>2016-05-23</pubDate>
+      <pubDate>2016-06-04</pubDate>
       <guid>http://cangwolf.github.io/blog/2016/03/07/use-org-page-build-blog-on-github</guid>
     </item>
   </channel>
